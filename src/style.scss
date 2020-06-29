@@ -1,0 +1,51 @@
+// Colours
+$white: white;
+$darkblue: #20212c;
+$gray: #f0ca24;
+$lightgray: #fafafa;
+
+// Sizes
+$large: 6rem;
+
+// Fonts
+$SanFran: -apple-system, BlinkMacSystemFont, sans-serif;
+%antialiasing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Styling
+body {
+  @extend %antialiasing;
+  font-family: $SanFran;
+
+  display: flex;
+  flex-direction: column;
+  background: $darkblue;
+  padding: 10%;
+
+  h1 {
+    font-size: $large;
+    font-weight: 800;
+    color: $gray;
+    margin: 0;
+
+    .addition {
+      display: none;
+    }
+
+    & span img{
+      margin: -1rem;
+      width: 150px;
+      transform: rotate(-25deg);
+      filter: drop-shadow(0 0 60px rgb(6, 184, 255));
+    }
+  }
+
+  p {
+    font-size: $large;
+    font-weight: 500;
+    color: $white;
+    margin: 0;
+  }
+}
