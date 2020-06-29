@@ -8,7 +8,7 @@ anime.timeline({loop: false})
     opacity: [0,1],
     easing: "easeOutExpo",
     duration: 800,
-    delay: (el, i) => 1500 + 30 * i
+    delay: (el, i) => 500 + 30 * i
   })
   .add({
     targets: '.a',
@@ -19,7 +19,7 @@ anime.timeline({loop: false})
     duration: 400,
   })
   .add({
-    targets: ['.b'],
+    targets: ['.a'],
     translateX: [0,-30],
     opacity: [1,0],
     display: ['none', 'block'],

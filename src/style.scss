@@ -1,11 +1,13 @@
 // Colours
 $white: white;
 $darkblue: #20212c;
-$gray: #f0ca24;
+$yellow: #f0ca24;
+$fiestared: #ec4116;
 $lightgray: #fafafa;
+$lightblue: #30b2fd;
 
 // Sizes
-$large: 6rem;
+$large: 5rem;
 
 // Fonts
 $SanFran: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -21,31 +23,38 @@ body {
 
   display: flex;
   flex-direction: column;
-  background: $darkblue;
   padding: 10%;
 
   h1 {
     font-size: $large;
     font-weight: 800;
-    color: $gray;
     margin: 0;
 
     .addition {
       display: none;
     }
 
-    & span img{
+    & span img {
       margin: -1rem;
       width: 150px;
       transform: rotate(-25deg);
-      filter: drop-shadow(0 0 60px rgb(6, 184, 255));
+      filter: drop-shadow(0 0 60px $white);
     }
   }
 
   p {
     font-size: $large;
-    font-weight: 500;
-    color: $white;
+    font-weight: 200;
     margin: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background: $darkblue;
+    color: $lightgray;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background: $lightgray;
+    color: $darkblue;
   }
 }
