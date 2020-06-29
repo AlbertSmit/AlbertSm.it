@@ -25,6 +25,9 @@ body {
   flex-direction: column;
   padding: 10%;
 
+  background: $darkblue;;
+  color: $lightgray;
+
   h1 {
     font-size: $large;
     font-weight: 800;
