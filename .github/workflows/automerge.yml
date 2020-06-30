@@ -13,14 +13,14 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Create PR
-      uses: technote-space/create-pr-action@v2
-      with:
-        COMMIT_MESSAGE: 'automerge: merge develop to master.'
-        COMMIT_NAME: 'GitHub Actions'
-        PR_BRANCH_NAME: 'automerge'
-        PR_TITLE: 'Auto-PR-${PR_ID}'
-       
-    - name: Merge PR
-      uses: "pascalgn/automerge-action@4536e8847eb62fe2f0ee52c8fa92d17aa97f932f"
+      uses: vsoch/pull-request-action@1.0.6
       env:
-        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PULL_REQUEST_BRANCH: "master"
+        PULL_REQUEST_TITLE: "Automerge PR No.${GITHUB_RUN_NUMBER}"
+        PULL_REQUEST_BODY: "Auto-generated PR. :rocket:"
+       
+#     - name: Merge PR
+#       uses: "pascalgn/automerge-action@4536e8847eb62fe2f0ee52c8fa92d17aa97f932f"
+#       env:
+#         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
