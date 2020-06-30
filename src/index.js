@@ -11,7 +11,7 @@ anime.timeline({loop: false})
     delay: (el, i) => 500 + 30 * i
   })
   .add({
-    targets: '.a',
+    targets: '.ba',
     translateX: [40,0],
     translateZ: 0,
     opacity: [0,1],
@@ -19,15 +19,15 @@ anime.timeline({loop: false})
     duration: 400,
   })
   .add({
-    targets: ['.a'],
+    targets: ['.ba'],
     translateX: [0,-30],
     opacity: [1,0],
     display: ['none', 'block'],
     easing: "easeInExpo",
-    duration: 400,
+    duration: 200,
     delay: (el, i) => 100 + 30 * i,
     complete: function() {
-      document.querySelector('.a').style.display = 'none';
+      document.querySelector('.ba').style.display = 'none';
     },
   })
   .add({
@@ -37,8 +37,5 @@ anime.timeline({loop: false})
     opacity: [0,1],
     easing: "easeOutExpo",
     duration: 800,
-    delay: (el, i) => 500 + 30 * i,
-    begin: function() {
-      document.querySelector('.d').style.display = 'inline-block';
-    },
+    delay: (el, i) => 500 + 30 * i
   });

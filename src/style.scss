@@ -7,7 +7,7 @@ $lightgray: #fafafa;
 $lightblue: #30b2fd;
 
 // Sizes
-$large: 5rem;
+$large: 7vw;
 
 // Fonts
 $SanFran: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -27,6 +27,7 @@ body {
 
   background: $darkblue;;
   color: $lightgray;
+  line-height: 1;
 
   h1 {
     font-size: $large;
@@ -39,7 +40,7 @@ body {
 
     & span img {
       margin: -1rem;
-      width: 150px;
+      width: 10vw;
       transform: rotate(-25deg);
       filter: drop-shadow(0 0 60px $white);
     }
