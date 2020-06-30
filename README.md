@@ -5,3 +5,4 @@ Personal website.
 
 Build with:
 - Parcel
+- Anime.js
