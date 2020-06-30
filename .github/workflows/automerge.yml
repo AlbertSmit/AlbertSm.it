@@ -20,7 +20,14 @@ jobs:
         PULL_REQUEST_TITLE: "Automerge PR No.${GITHUB_RUN_NUMBER}"
         PULL_REQUEST_BODY: "Auto-generated PR. :rocket:"
        
-#     - name: Merge PR
-#       uses: "pascalgn/automerge-action@4536e8847eb62fe2f0ee52c8fa92d17aa97f932f"
-#       env:
-#         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+    - name: Label PR
+      uses: TDAK1509/set-label-based-on-pr-title@v1
+      with:
+        words: Automerge
+        labels: automerge
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+
+    - name: Merge PR
+      uses: "pascalgn/automerge-action@4536e8847eb62fe2f0ee52c8fa92d17aa97f932f"
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
