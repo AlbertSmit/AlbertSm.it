@@ -2,10 +2,10 @@
   "name": "AlbertSm.it",
   "version": "1.0.0",
   "description": "Personal website",
-  "main": "src/index.html",
+  "main": "build/index.html",
   "scripts": {
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html -d build"
+    "build": "parcel build src/index.html"
   },
   "repository": {
     "type": "git",
