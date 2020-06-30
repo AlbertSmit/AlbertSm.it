@@ -1,5 +1,6 @@
 import anime from 'animejs';
 
+// Animation.
 anime.timeline({ loop: false })
   .add({
     targets: '.develop',
@@ -24,7 +25,7 @@ anime.timeline({ loop: false })
     opacity: [1, 0],
     display: ['none', 'block'],
     easing: 'easeInExpo',
-    duration: 200,
+    duration: 300,
     delay: (el, i) => 100 + 30 * i,
     complete() {
       document.querySelector('.ba').style.display = 'none';
