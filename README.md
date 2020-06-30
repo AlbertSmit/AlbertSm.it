@@ -6,3 +6,5 @@ Personal website.
 Build with:
 - Parcel
 - Anime.js
+- ESLint
+- SASS
