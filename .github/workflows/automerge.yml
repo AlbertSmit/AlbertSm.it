@@ -20,13 +20,6 @@ jobs:
         PR_BRANCH_NAME: 'automerge'
         PR_TITLE: 'Auto-PR-${PR_ID}'
        
-    - name: Tag PR
-      uses: TimonVS/pr-labeler-action@v3
-      with:
-        configuration-path: .github/labels.yml
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       
     - name: Merge PR
       uses: "pascalgn/automerge-action@4536e8847eb62fe2f0ee52c8fa92d17aa97f932f"
       env:
