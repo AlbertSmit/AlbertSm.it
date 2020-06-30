@@ -27,15 +27,15 @@ jobs:
         npm ci
         npm run build
       
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        path: build
+#     - name: Upload Artifact
+#       uses: actions/upload-artifact@v2
+#       with:
+#         path: build
       
     - name: Content list
       uses: enricomarino/actions@v2
       with:
-        source: build
+        source: ./
 
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
