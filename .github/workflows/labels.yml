@@ -1,0 +1,4 @@
+# List to auto-tag.
+# Required for automerge workflow.
+
+automerge: 'automerge/*'
