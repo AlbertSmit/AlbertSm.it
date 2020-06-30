@@ -32,17 +32,10 @@ jobs:
       with:
         path: build
       
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Download Artifact
-      uses: actions/download-artifact@v2
+    - name: Content list
+      uses: enricomarino/actions@v2
       with:
-        path: build
-        
-    - name: Display structure of downloaded files
-      run: ls -R
-      working-directory: build
+        source: build
 
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
@@ -50,5 +43,5 @@ jobs:
         ftp-server: ${{ secrets.FTP }}
         ftp-username: ${{ secrets.FTP_USER }}
         ftp-password: ${{ secrets.FTP_PW }}
-        local-dir: ./
+        local-dir: build
         
