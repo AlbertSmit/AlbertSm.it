@@ -21,22 +21,52 @@ body {
   @extend %antialiasing;
   font-family: $SanFran;
 
-  display: flex;
-  flex-direction: column;
-  padding: 10%;
-
   background: $darkblue;;
   color: $lightgray;
   line-height: 1;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  width: 100vw;
+  max-height: 5vh;
+
+  & ul {
+    display: flex;
+    padding: .5rem;
+
+    & li {
+      font-size: .8rem;
+      font-weight: 600;
+
+      display: flex;
+      list-style: none;
+      flex-direction: column;
+      margin-right: 2rem;
+
+      & a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      & + li {
+        margin-left: .5rem;
+      }
+    }
+  }
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  padding: 10%;
 
   h1 {
     font-size: $large;
     font-weight: 800;
     margin: 0;
-
-    .addition {
-      display: none;
-    }
 
     & span img {
       width: 10vw;
