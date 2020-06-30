@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    branches: 
+      master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2.1.0
+
+    - name: Cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          **/node_modules
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+
+    - name: Build
+      run: |
+        npm ci
+        npm run build
+        
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: dist
