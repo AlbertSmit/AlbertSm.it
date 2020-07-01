@@ -25,6 +25,16 @@ body {
   color: $lightgray;
   line-height: 1;
   margin: 0;
+
+  @media (prefers-color-scheme: dark) {
+    background: $darkblue;
+    color: $lightgray;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background: $lightgray;
+    color: $darkblue;
+  }
 }
 
 header {
@@ -79,15 +89,5 @@ section {
     font-size: $large;
     font-weight: 200;
     margin: 0;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background: $darkblue;
-    color: $lightgray;
-  }
-
-  @media (prefers-color-scheme: light) {
-    background: $lightgray;
-    color: $darkblue;
   }
 }
