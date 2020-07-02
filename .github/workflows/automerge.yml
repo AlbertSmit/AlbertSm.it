@@ -1,97 +1,47 @@
-# This is a basic workflow to help you get started with Actions
+name: AutoMerge
 
-name: Automerge
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
+  push:
+    branches:
+      - develop
 
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  
-  merge:
-    name: "Merge"
-
+jobs:  
+  automerge:
+    name: "AutoMerge™"
+    if:  startsWith(github.event.head_commit.message, 'AutoMerge:')
     runs-on: "ubuntu-latest"
-
-    needs:
-      - "code-coverage"
-      - "coding-standards"
-      - "dependency-analysis"
-      - "mutation-tests"
-      - "static-code-analysis"
-      - "tests"
-
-    if: >
-      github.event_name == 'pull_request' &&
-      github.event.pull_request.draft == false && (
-        github.event.action == 'opened' ||
-        github.event.action == 'reopened' ||
-        github.event.action == 'synchronize'
-      ) && (
-        (github.actor == 'dependabot[bot]' && startsWith(github.event.pull_request.title, 'Build(deps-dev)')) ||
-        (github.actor == 'ergebnis-bot' && github.event.pull_request.title == 'Enhancement: Update license year') ||
-        (github.actor == 'localheinz' && contains(github.event.pull_request.labels.*.name, 'merge'))
-      )
     steps:
-      - name: "Request review from @ergebnis-bot"
+      - name: "Create AutoMerge™ PR"
         uses: "actions/github-script@v2"
         with:
-          github-token: "${{ secrets.ERGEBNIS_BOT_TOKEN }}"
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
           script: |
-            const pullRequest = context.payload.pull_request
             const repository = context.repo
-            const reviewers = [
-              "ergebnis-bot",
-            ]
-            await github.pulls.createReviewRequest({
-              owner: repository.owner,
-              pull_number: pullRequest.number,
-              repo: repository.repo,
-              reviewers: reviewers,
-            })
-      - name: "Assign @ergebnis-bot"
-        uses: "actions/github-script@v2"
-        with:
-          github-token: "${{ secrets.ERGEBNIS_BOT_TOKEN }}"
-          script: |
-            const pullRequest = context.payload.pull_request
-            const repository = context.repo
-            const reviewers = [
-              "ergebnis-bot",
-            ]
-            await github.issues.addAssignees({
-              assignees: reviewers,
-              issue_number: pullRequest.number,
+            await github.pulls.create({
               owner: repository.owner,
               repo: repository.repo,
+              title: "AutoMerge™",
+              head: "develop",
+              base: "master",
+              body: "Automatically merged through AutoMerge™ by Github Actions. :rocket:"
             })
-      - name: "Approve pull request"
-        uses: "actions/github-script@v2"
-        if: "github.actor != 'ergebnis-bot'"
+            
+      - name: "Find PR"
+        uses: juliangruber/find-pull-request-action@v1
+        id: find-pr
         with:
-          github-token: "${{ secrets.ERGEBNIS_BOT_TOKEN }}"
-          script: |
-            const pullRequest = context.payload.pull_request
-            const repository = context.repo
-            await github.pulls.createReview({
-              event: "APPROVE",
-              owner: repository.owner,
-              pull_number: pullRequest.number,
-              repo: repository.repo,
-            })
-      - name: "Merge pull request"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          branch: develop
+
+      - name: "Merge AutoMerge™ PR"
         uses: "actions/github-script@v2"
         with:
-          github-token: "${{ secrets.ERGEBNIS_BOT_TOKEN }}"
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
           script: |
-            const pullRequest = context.payload.pull_request
             const repository = context.repo
             await github.pulls.merge({
               merge_method: "merge",
               owner: repository.owner,
-              pull_number: pullRequest.number,
+              pull_number: ${{ steps.find-pr.outputs.number }},
               repo: repository.repo,
             })
