@@ -33,6 +33,19 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           branch: develop
 
+      - name: "Label PR"
+        uses: "actions/github-script@v2"
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          script: |
+            const repository = context.repo
+            await octokit.issues.addLabels({
+              owner: repository.owner,
+              repo: repository.repo,
+              issue_number: ${{ steps.find-pr.outputs.number }},
+              labels: ["AutoMerge™ :rocket:"]
+            });
+
       - name: "Merge AutoMerge™ PR"
         uses: "actions/github-script@v2"
         with:
@@ -45,3 +58,36 @@ jobs:
               pull_number: ${{ steps.find-pr.outputs.number }},
               repo: repository.repo,
             })
+            
+  deploy:
+    needs: automerge
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.0
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        with:
+          ftp-server: ${{ secrets.FTP }}
+          ftp-username: ${{ secrets.FTP_USER }}
+          ftp-password: ${{ secrets.FTP_PW }}
+          local-dir: build
+
