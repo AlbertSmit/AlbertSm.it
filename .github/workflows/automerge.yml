@@ -33,6 +33,19 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           branch: develop
 
+      - name: "Label PR"
+        uses: "actions/github-script@v2"
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          script: |
+            const repository = context.repo
+            await octokit.issues.addLabels({
+              owner: repository.owner,
+              repo: repository.repo,
+              issue_number: ${{ steps.find-pr.outputs.number }},
+              labels: ["AutoMerge™ :rocket:"]
+            });
+
       - name: "Merge AutoMerge™ PR"
         uses: "actions/github-script@v2"
         with:
