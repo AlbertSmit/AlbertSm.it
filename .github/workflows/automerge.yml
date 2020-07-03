@@ -39,7 +39,7 @@ jobs:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           script: |
             const repository = context.repo
-            await octokit.issues.addLabels({
+            await github.issues.addLabels({
               owner: repository.owner,
               repo: repository.repo,
               issue_number: ${{ steps.find-pr.outputs.number }},
