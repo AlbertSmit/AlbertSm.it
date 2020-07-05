@@ -39,4 +39,12 @@ anime.timeline({ loop: false })
     easing: 'easeOutExpo',
     duration: 800,
     delay: (el, i) => 500 + 30 * i,
+  })
+  .add({
+    targets: '.dribbble',
+    rotate: [40, 0],
+    color: 'white',
+    opacity: [0, 1],
+    easing: 'easeOutExpo',
+    duration: 800,
   });
