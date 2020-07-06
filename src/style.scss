@@ -91,32 +91,3 @@ section {
     margin: 0;
   }
 }
-
-footer {
-  padding: 0 10%;
-
-  a {
-    $orange: rgb(233, 169, 74);
-
-    display: flex;
-    justify-content: flex-start;
-    width: min-content;
-
-    border: none;
-    color: inherit;
-    appearance: none;
-    background: none;
-    border-radius: 2rem;
-    font-weight: 600;
-    
-    svg {
-      cursor: pointer;
-      color: $orange;
-
-      transition: .3s all ease;
-      &:hover {
-        color: lighten($orange, 30%);
-      }
-    }
-  }
-}
