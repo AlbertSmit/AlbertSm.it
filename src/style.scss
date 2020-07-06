@@ -96,13 +96,11 @@ footer {
   padding: 0 10%;
 
   a {
-    $min-size: 15px;
-    $size: 4vw;
     $orange: rgb(233, 169, 74);
 
     display: flex;
     justify-content: flex-start;
-    width: $size;
+    width: min-content;
 
     border: none;
     color: inherit;
@@ -112,10 +110,6 @@ footer {
     font-weight: 600;
     
     svg {
-      min-width: $min-size;
-      min-height: $min-size;
-      height: $size;
-      width: $size;
       cursor: pointer;
       color: $orange;
 
