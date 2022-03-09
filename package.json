@@ -2,7 +2,6 @@
   "name": "AlbertSm.it",
   "version": "1.1.0",
   "description": "Personal website",
-  "main": "build/index.html",
   "scripts": {
     "dev": "parcel src/index.html",
     "watch": "parcel watch src/index.html",
@@ -15,15 +14,14 @@
   "keywords": [],
   "author": "Albert Smit",
   "dependencies": {
-    "@ryangjchandler/spruce": "^2.0.0",
-    "alpinejs": "^2.4.1",
     "animejs": "^3.2.0"
   },
   "devDependencies": {
-    "eslint": "7.19.0",
-    "eslint-config-airbnb-base": "14.2.1",
-    "eslint-plugin-import": "2.22.1",
-    "parcel": "2.0.0-nightly.577",
-    "sass": "1.32.6"
+    "eslint": "8.10.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-plugin-import": "2.25.4",
+    "parcel": "2.3.2",
+    "prettier": "^2.5.1",
+    "purgecss": "^4.1.3"
   }
 }

@@ -2,45 +2,44 @@ name: Deploy
 
 # on:
 #   push:
-#     branches: 
+#     branches:
 #       master
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2.1.4
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.1.4
 
-    - name: Cache
-      uses: actions/cache@v2
-      with:
-        path: |
-          **/node_modules
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
-    - name: Build
-      run: |
-        npm ci
-        npm run build
-      
-#     - name: Upload Artifact
-#       uses: actions/upload-artifact@v2
-#       with:
-#         path: build
+      - name: Build
+        run: |
+          npm ci
+          npm run build
 
-    - name: List Build
-      run: |
-        ls build
-        
-    - name: FTP Deploy
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        ftp-server: ${{ secrets.FTP }}
-        ftp-username: ${{ secrets.FTP_USER }}
-        ftp-password: ${{ secrets.FTP_PW }}
-        local-dir: build
-        
+      #     - name: Upload Artifact
+      #       uses: actions/upload-artifact@v2
+      #       with:
+      #         path: build
+
+      - name: List Build
+        run: |
+          ls build
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          ftp-server: ${{ secrets.FTP }}
+          ftp-username: ${{ secrets.FTP_USER }}
+          ftp-password: ${{ secrets.FTP_PW }}
+          local-dir: build

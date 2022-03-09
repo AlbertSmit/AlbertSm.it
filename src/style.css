@@ -1,0 +1,111 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --bg: cornflowerblue;
+  --text: rgb(235,232,220);
+  --accent: rgb(175,200,235);
+}
+ 
+@font-face {
+  font-family: "PP Editorial New";
+  src: url("./assets/PPEditorialNew-Ultralight.woff") format("woff");
+}
+
+@font-face {
+  font-family: "PP Right Gothic";
+  src: url("./assets/PPRightGothic-SpatialBlack.woff") format("woff");
+}
+ 
+h1,
+p {
+  --fluid-type-min: 2.5rem;
+  --fluid-type-max: 2rem;
+  --fluid-type-target: 5vw;
+
+  margin: 0;
+  line-height: 1;
+  font-size: clamp(
+    var(--fluid-type-min, 1rem),
+    calc(1rem + var(--fluid-type-target, 3vw)),
+    var(--fluid-type-max, 1.3rem)
+  );
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0; 
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --bg: rgb(22, 22, 33); 
+  }
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  max-height: min-content;
+  width: 100vw;
+}
+
+header > ul {
+  display: flex;
+  padding: 0.5rem;
+}
+
+ul > li {
+  font-size: 0.8rem;
+  font-weight: 400;
+
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li + li {
+  margin-left: 0.5rem;
+}
+
+section {
+  margin: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  --fluid-type-min: 2rem;
+  --fluid-type-max: 3rem;
+  --fluid-type-target: 5vw;
+
+  font-family: "PP Right Gothic", PP Right Gothic, apple-system,
+    BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.0125em;
+ }
+ 
+p {
+  --fluid-type-min: 1.75rem;
+  --fluid-type-max: 2.25rem;
+  --fluid-type-target: 5vw;
+
+  font-family: "PP Editorial New", PP Editorial New, apple-system,
+    BlinkMacSystemFont, sans-serif;
+  color: var(--accent);
+}
+
+img {
+  max-width: 100px;
+  transform: rotate(-20deg);
+}
+ 

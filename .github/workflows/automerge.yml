@@ -5,10 +5,10 @@ on:
     branches:
       - develop
 
-jobs:  
+jobs:
   automerge:
     name: "AutoMerge™"
-    if:  startsWith(github.event.head_commit.message, 'AutoMerge:')
+    if: startsWith(github.event.head_commit.message, 'AutoMerge:')
     runs-on: "ubuntu-latest"
     steps:
       - name: "Create AutoMerge™ PR"
@@ -25,7 +25,7 @@ jobs:
               base: "master",
               body: "Automatically merged through AutoMerge™ by Github Actions. :rocket:"
             })
-            
+
       - name: "Find PR"
         uses: juliangruber/find-pull-request-action@v1
         id: find-pr
@@ -58,7 +58,7 @@ jobs:
               pull_number: ${{ steps.find-pr.outputs.number }},
               repo: repository.repo,
             })
-            
+
   deploy:
     needs: automerge
     runs-on: ubuntu-latest
@@ -90,4 +90,3 @@ jobs:
           ftp-username: ${{ secrets.FTP_USER }}
           ftp-password: ${{ secrets.FTP_PW }}
           local-dir: build
-
