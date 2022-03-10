@@ -9,16 +9,6 @@
   --accent: rgb(175,200,235);
 }
  
-@font-face {
-  font-family: "PP Editorial New";
-  src: url("./assets/PPEditorialNew-Ultralight.woff") format("woff");
-}
-
-@font-face {
-  font-family: "PP Right Gothic";
-  src: url("./assets/PPRightGothic-SpatialBlack.woff") format("woff");
-}
- 
 h1,
 p {
   --fluid-type-min: 2.5rem;
