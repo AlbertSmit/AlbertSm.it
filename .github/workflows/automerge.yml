@@ -5,10 +5,10 @@ on:
     branches:
       - develop
 
-jobs:  
+jobs:
   automerge:
     name: "AutoMerge™"
-    if:  startsWith(github.event.head_commit.message, 'AutoMerge:')
+    if: startsWith(github.event.head_commit.message, 'AutoMerge:')
     runs-on: "ubuntu-latest"
     steps:
       - name: "Create AutoMerge™ PR"
@@ -25,7 +25,7 @@ jobs:
               base: "master",
               body: "Automatically merged through AutoMerge™ by Github Actions. :rocket:"
             })
-            
+
       - name: "Find PR"
         uses: juliangruber/find-pull-request-action@v1
         id: find-pr
@@ -58,7 +58,7 @@ jobs:
               pull_number: ${{ steps.find-pr.outputs.number }},
               repo: repository.repo,
             })
-            
+
   deploy:
     needs: automerge
     runs-on: ubuntu-latest
@@ -69,7 +69,7 @@ jobs:
           ref: master
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2.1.0
+        uses: actions/setup-node@v2.1.4
 
       - name: Cache
         uses: actions/cache@v2
@@ -84,10 +84,9 @@ jobs:
           npm run build
 
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
           ftp-server: ${{ secrets.FTP }}
           ftp-username: ${{ secrets.FTP_USER }}
           ftp-password: ${{ secrets.FTP_PW }}
           local-dir: build
-
