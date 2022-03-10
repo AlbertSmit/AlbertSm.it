@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "parcel src/index.html",
     "watch": "parcel watch src/index.html",
-    "build": "parcel build src/index.html -d build"
+    "build": "parcel build src/index.html"
   },
   "repository": {
     "type": "git",
