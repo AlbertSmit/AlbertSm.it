@@ -2,8 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches:
-      master
+    branches: master
 
 jobs:
   build:
@@ -34,7 +33,7 @@ jobs:
 
       - name: List Build
         run: |
-          ls build
+          ls dist
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
@@ -42,4 +41,4 @@ jobs:
           ftp-server: ${{ secrets.FTP }}
           ftp-username: ${{ secrets.FTP_USER }}
           ftp-password: ${{ secrets.FTP_PW }}
-          local-dir: build
+          local-dir: dist
