@@ -21,7 +21,7 @@
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.25.4",
     "parcel": "^2.3.2",
-    "prettier": "^2.5.1",
+    "prettier": "2.7.1",
     "purgecss": "^4.1.3"
   }
 }
