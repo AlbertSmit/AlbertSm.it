@@ -36,7 +36,7 @@ jobs:
           ls dist
 
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           port: 21
           server: ${{ secrets.FTP }}
